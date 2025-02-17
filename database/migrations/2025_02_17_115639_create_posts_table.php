@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->text('body');
+            $table->string('body',1000);
             $table->boolean('is_pinned')->default(false);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('corner_id')->nullable()->constrained('corners')->cascadeOnDelete();
             $table->enum('privacy', ['public', 'private','friendsOnly'])->default('friendsOnly');
             $table->fullText('slug');
-            $table->index('text');
             $table->softDeletes();
             $table->timestamps();
         });
