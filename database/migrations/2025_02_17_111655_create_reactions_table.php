@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reactions', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->morphs('reactable');
             $table->enum('type', ['like','A7a', 'fire','meh','why are you gay?'])->default('like');

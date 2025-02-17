@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('corner_user', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('corner_id')->constrained('corners')->cascadeOnDelete();
             $table->enum('type',['Newbie','Admin','Contributor','Owner'])->default('Newbie');

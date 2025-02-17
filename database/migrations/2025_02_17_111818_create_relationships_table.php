@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shares', function (Blueprint $table) {
-            $table->id();
+        Schema::create('relationships', function (Blueprint $table) {
+            //$table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('post_id')->constrained('posts');
-            $table->text('content')->nullable();
+            $table->foreignId('related_id')->constrained('users')->cascadeOnDelete();
+            $table->enum('type', ['friend', 'follows'])->default('follows');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shares');
+        Schema::dropIfExists('friends');
     }
 };

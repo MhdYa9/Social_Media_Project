@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->string('file_path')->nullable();
+            $table->foreignId('shared_post_id')->nullable()->constrained('posts');
             $table->string('body',1000);
             $table->boolean('is_pinned')->default(false);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
