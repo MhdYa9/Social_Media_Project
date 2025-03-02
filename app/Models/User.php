@@ -8,7 +8,9 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * Class User
@@ -39,6 +41,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Model
 {
+
+    use HasFactory,HasApiTokens;
+
 	protected $table = 'users';
 
 	protected $casts = [
@@ -54,12 +59,13 @@ class User extends Model
 
 	protected $fillable = [
 		'name',
-		'user_name',
+		'username',
 		'bio',
 		'email',
 		'profile_image',
 		'cover_image',
 		'birthday',
+        'password'
 	];
 
 
